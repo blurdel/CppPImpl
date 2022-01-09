@@ -28,7 +28,6 @@ private:
 
 
 DdsPublisher::DdsPublisher(int pDomainId, std::string pTopicName) :
-//	pImpl(new DdsPublisherImpl(pDomainId, pTopicName))
 	uImpl{ std::make_unique<DdsPublisherImpl>(pDomainId, pTopicName) }
 {
 	std::cout << "pDomainId=" << pDomainId
@@ -40,7 +39,6 @@ DdsPublisher::DdsPublisher(DdsPublisher&&) = default;
 DdsPublisher& DdsPublisher::operator=(DdsPublisher&&) = default;
 
 DdsPublisher::~DdsPublisher() {
-//	delete pImpl;
 	std::cout << "~DdsPublisher" << std::endl;
 }
 

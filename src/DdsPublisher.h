@@ -18,7 +18,6 @@ public:
 
 private:
 	class DdsPublisherImpl;
-//	DdsPublisherImpl* pImpl;
 	std::unique_ptr<DdsPublisherImpl> uImpl;
 };
 
