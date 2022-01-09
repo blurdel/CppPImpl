@@ -28,16 +28,22 @@ private:
 
 
 DdsPublisher::DdsPublisher(int pDomainId, std::string pTopicName) :
-	pImpl(new DdsPublisherImpl(pDomainId, pTopicName))
+//	pImpl(new DdsPublisherImpl(pDomainId, pTopicName))
+	uImpl{ std::make_unique<DdsPublisherImpl>(pDomainId, pTopicName) }
 {
 	std::cout << "pDomainId=" << pDomainId
 			<< std::endl;
 }
 
+//DdsPublisher::~DdsPublisher() = default;
+DdsPublisher::DdsPublisher(DdsPublisher&&) = default;
+DdsPublisher& DdsPublisher::operator=(DdsPublisher&&) = default;
+
 DdsPublisher::~DdsPublisher() {
-	delete pImpl;
+//	delete pImpl;
+	std::cout << "~DdsPublisher" << std::endl;
 }
 
 void DdsPublisher::publish(std::string data) {
-	pImpl->publish(data);
+	uImpl->publish(data);
 }
